@@ -1,0 +1,12 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "ntlab/ntjs": "dev-master"
+    },
+    "repositories": {
+        "php-ntjs": {
+            "type": "vcs",
+            "url": "https://github.com/tohenk/php-ntjs.git"
+        }
+    }
+}
