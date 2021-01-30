@@ -37,18 +37,18 @@ class Backend extends Base implements DependencyResolverInterface
     /**
      * @var array
      */
-    protected $js = array(
-        'first' => array(),
-        'default' => array(),
-    );
+    protected $js = [
+        'first' => [],
+        'default' => [],
+    ];
 
     /**
      * @var array
      */
-    protected $css = array(
-        'first' => array(),
-        'default' => array(),
-    );
+    protected $css = [
+        'first' => [],
+        'default' => [],
+    ];
 
     /**
      * Constructor.
@@ -140,7 +140,7 @@ class Backend extends Base implements DependencyResolverInterface
 
     public function includeStylesheets()
     {
-        $css = array();
+        $css = [];
         foreach (array_merge($this->css['first'], $this->css['default']) as $stylesheet) {
             $css[] = sprintf('<link rel="stylesheet" href="%s">', $stylesheet);
         }
@@ -150,7 +150,7 @@ class Backend extends Base implements DependencyResolverInterface
 
     public function includeJavascripts()
     {
-        $js = array();
+        $js = [];
         foreach (array_merge($this->js['first'], $this->js['default']) as $javascript) {
             $js[] = sprintf('<script type="text/javascript" src="%s"></script>', $javascript);
         }

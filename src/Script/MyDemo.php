@@ -36,7 +36,7 @@ class MyDemo extends Base
      */
     protected function initialize()
     {
-        $this->addDependencies(array('JQuery.NS', 'Bootstrap.Dialog.Message'));
+        $this->addDependencies(['JQuery.NS', 'Bootstrap.Dialog.Message']);
     }
 
     /**

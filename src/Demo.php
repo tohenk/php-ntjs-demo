@@ -90,7 +90,7 @@ class Demo
      * @param array $vars
      * @return string
      */
-    protected function useView($viewName, $vars = array())
+    protected function useView($viewName, $vars = [])
     {
         include_once 'Helper.php';
         extract($vars);
@@ -107,7 +107,7 @@ class Demo
     public function run()
     {
         $content = $this->useView('demo.php');
-        $content = $this->useView('layout.php', array('content' => $content));
+        $content = $this->useView('layout.php', ['content' => $content, 'title' => 'PHP-NTJS Demo']);
 
         echo $content;
     }

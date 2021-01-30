@@ -1,18 +1,16 @@
-<?php create_script('Bootstrap')
-    ->includeScript() ?>
+<?php create_script('Bootstrap')->includeScript() ?>
 <?php use_stylesheet('css/demo.css') ?>
-<?php echo <<<EOF
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="https://ntlab.id/demo/php-ntjs">PHP-NTJS</a>
+  <a class="navbar-brand" href="https://ntlab.id/demo/php-ntjs">PHP-NTJS Demo</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDemo" aria-controls="navbarsDemo" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarsDemo">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a class="nav-link" href="https://github.com/tohenk/php-ntjs-demo">View Source</a></li>
     </ul>
     <ul class="navbar-nav pull-right">
+      <li class="nav-item"><a class="nav-link" href="https://github.com/tohenk/php-ntjs-demo">Source Code</a></li>
       <li class="nav-item"><a class="nav-link" href="https://github.com/tohenk/php-ntjs"><span class="fab fa-github"></span></a></li>
     </ul>
   </div>
@@ -63,9 +61,8 @@ EOL
 </main>
 
 <footer class="container">
-  <p>&copy; 2020 NTLAB.ID</p>
+  <p>&copy; 2021 NTLAB.ID</p>
 </footer>
-EOF ?>
 <?php create_script('MyDemo')
     ->includeScript()
     ->add(<<<EOF
