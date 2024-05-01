@@ -33,19 +33,20 @@
         <h2>JQuery and Bootstrap</h2>
         <p>Support for popular javascript like <a href="https://jquery.com">JQuery</a> and <a href="https://getbootstrap.com">Bootstrap</a>.</p>
         <pre>
-&lt;?php create_script('Bootstrap')-&gt;includeScript(); ?&gt;
+&lt;?php create_script('Bootstrap')
+    -&gt;includeScript() ?&gt;
 &lt;?php create_script('JQuery')
-    -&gt;includeDependecies(array('Bootstrap.Dialog.Message'));
+    -&gt;includeDependecies(array('Bootstrap.Dialog.Message'))
     -&gt;add(&lt;&lt;&lt;EOL
 $.ntdlg.message('welcome-msg', 'Howdy', 'Welcome everyone!', $.ntdlg.ICON_INFO);
 EOL
-    ); ?&gt;
+    ) ?&gt;
         </pre>
         <p><a class="btn btn-secondary demo1" href="#" role="button">Welcome</a></p>
       </div>
       <div class="col-md-4">
         <h2>CDN</h2>
-        <p>To speed up your page, <code>CDN</code> can be enabled, <code>PHP-NTJS</code> will automatically do it for you. Just loads needed <a href="https://github.com/tohenk/php-ntjs/blob/master/cdn.json">CDN information</a> and assets will loaded from CDN.</p>
+        <p>To speed up your page, <code>CDN</code> can be enabled, <code>PHP-NTJS</code> will automatically do it for you. Just loads needed <a href="https://github.com/tohenk/ntjs-web-assets/blob/master/cdn.json">CDN information</a> and assets will loaded from CDN.</p>
       </div>
       <div class="col-md-4">
         <h2>Minified Output</h2>
@@ -57,7 +58,6 @@ EOL
 </main>
 <footer class="container"><p>&copy; 2021 NTLAB.ID</p></footer>
 <?php create_script('MyDemo')
-    ->includeScript()
     ->add(<<<EOF
 $('a.clickme').on('click', function(e) {
     e.preventDefault();
