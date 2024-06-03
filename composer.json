@@ -1,6 +1,6 @@
 {
     "require": {
-        "ntlab/ntjs": "^2.3",
+        "ntlab/ntjs": "^3.3",
         "mrclay/jsmin-php": "^2.4"
     }
 }

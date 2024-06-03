@@ -45,10 +45,12 @@ class MyDemo extends Base
      */
     public function getScript()
     {
+        $date = new \DateTime();
+        $time = $this->useVar('time', $date->format(\DateTime::ISO8601));
         return <<<EOF
 $.define('mydemo', {
     show: function() {
-        $.ntdlg.message('my-demo-msg', 'Demo', 'Demo message', $.ntdlg.ICON_SUCCESS);
+        $.ntdlg.message('my-demo-msg', 'Demo', 'Demo message generated at <code>%TIME%</code>'.replace(/%TIME%/, $time), $.ntdlg.ICON_SUCCESS);
     }
 });
 EOF;

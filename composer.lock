@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2443b071647c847ca4f46487d393c4eb",
+    "content-hash": "81499b90bbcb9679d3eaadc326e66f8e",
     "packages": [
         {
             "name": "mrclay/jsmin-php",
@@ -65,16 +65,16 @@
         },
         {
             "name": "ntlab/ntjs",
-            "version": "v2.3.0",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tohenk/php-ntjs.git",
-                "reference": "e000a94f09114b137947041cdb4b2681b0392dec"
+                "reference": "304d2c9d51b10d54fe335be6064835585dd753d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tohenk/php-ntjs/zipball/e000a94f09114b137947041cdb4b2681b0392dec",
-                "reference": "e000a94f09114b137947041cdb4b2681b0392dec",
+                "url": "https://api.github.com/repos/tohenk/php-ntjs/zipball/304d2c9d51b10d54fe335be6064835585dd753d4",
+                "reference": "304d2c9d51b10d54fe335be6064835585dd753d4",
                 "shasum": ""
             },
             "require": {
@@ -84,6 +84,14 @@
                 "phpunit/phpunit": "^9.5"
             },
             "type": "library",
+            "extra": {
+                "script-resolvers": {
+                    "NTLAB\\JS\\Script": "NTLAB\\JS\\DependencyResolver"
+                },
+                "repository-initializers": {
+                    "jquery": "NTLAB\\JS\\Repository\\JQuery"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "NTLAB\\JS\\": "src/",
@@ -110,9 +118,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tohenk/php-ntjs/issues",
-                "source": "https://github.com/tohenk/php-ntjs/tree/v2.3.0"
+                "source": "https://github.com/tohenk/php-ntjs/tree/v3.3.1"
             },
-            "time": "2024-04-26T00:55:22+00:00"
+            "time": "2024-06-03T03:32:42+00:00"
         }
     ],
     "packages-dev": [],

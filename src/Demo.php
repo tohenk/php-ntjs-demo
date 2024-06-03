@@ -43,7 +43,7 @@ class Demo
      *
      * @var boolean
      */
-    protected $minifyScript = true;
+    protected $minifyScript = false;
 
     /**
      * Enable/disable script debug information.
@@ -51,6 +51,16 @@ class Demo
      * @var boolean
      */
     protected $debugScript = true;
+
+    /**
+     * Enable/disable script embedding in response.
+     *
+     * When script embedding set to `false`, use an external web server
+     * is a must.
+     *
+     * @var boolean
+     */
+    protected $embedScript = true;
 
     /**
      * Constructor.
@@ -70,7 +80,7 @@ class Demo
     {
         $manager = Manager::getInstance();
         // create backend instance
-        $backend = new Backend(isset($this->options['cdn']) ? $this->options['cdn'] : null);
+        $backend = new Backend(array_merge($this->options, ['embed_script' => $this->embedScript]));
         // set script backend
         $manager->setBackend($backend);
         // register script resolver
@@ -82,6 +92,10 @@ class Demo
         // set script debug information
         if ($this->debugScript) {
             Script::setDebug(true);
+        }
+        // register script consumer
+        if (!$this->embedScript) {
+            $manager->setConsumer($backend);
         }
     }
 
@@ -103,14 +117,55 @@ class Demo
         return $content;
     }
 
-    /**
-     * Run the demo.
-     */
-    public function run()
+    protected function getRoute()
+    {
+        $route = isset($_SERVER['SCRIPT_URL']) ? $_SERVER['SCRIPT_URL'] : $_SERVER['REQUEST_URI'];
+        if ($scriptName = $_SERVER['SCRIPT_NAME']) {
+            if (0 === strpos($route, $scriptName)) {
+                $route = substr($route, strlen($scriptName));
+            }
+        }
+        if (false !== ($p = strpos($route, '?'))) {
+            $route = substr($route, 0, $p);
+        }
+        return $route;
+    }
+
+    protected function executeIndex($parameters = [])
     {
         $content = $this->useView('demo.php');
         $content = $this->useView('layout.php', ['content' => $content, 'title' => 'PHP-NTJS Demo']);
 
         echo $content;
+    }
+
+    protected function executeJs($parameters = [])
+    {
+        if (isset($parameters['filename'])) {
+            $rootDir = $this->options['root_dir'];
+            if (is_file($filename = realpath($rootDir.'/var/script/'.basename($parameters['filename'])))) {
+                echo file_get_contents($filename);
+                return;
+            }
+        }
+        header('HTTP/1.1 404 Not Found');
+    }
+
+    /**
+     * Run the demo.
+     */
+    public function run()
+    {
+        $parameters = [];
+        $route = $this->getRoute();
+        if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING'])) {
+            parse_str($_SERVER['QUERY_STRING'], $parameters);
+        }
+        $matches = null;
+        if (preg_match('#^/js/(?<filename>([a-zA-Z0-9]+)\.js)$#', $route, $matches)) {
+            $this->executeJs(array_merge($parameters, ['filename' => $matches['filename']]));
+        } else {
+            $this->executeIndex($parameters);
+        }
     }
 }
