@@ -33,10 +33,8 @@
         <h2>JQuery and Bootstrap</h2>
         <p>Support for popular javascript like <a href="https://jquery.com">JQuery</a> and <a href="https://getbootstrap.com">Bootstrap</a>.</p>
         <pre>
-&lt;?php create_script('Bootstrap')
-    -&gt;includeScript() ?&gt;
 &lt;?php create_script('JQuery')
-    -&gt;includeDependecies(array('Bootstrap.Dialog.Message'))
+    -&gt;includeDependencies(['Bootstrap.Dialog.Message'])
     -&gt;add(&lt;&lt;&lt;EOL
 $.ntdlg.message('welcome-msg', 'Howdy', 'Welcome everyone!', $.ntdlg.ICON_INFO);
 EOL
